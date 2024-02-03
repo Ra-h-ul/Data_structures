@@ -35,8 +35,16 @@ public class CustomQueue {
         if (isEmpty()) {
             throw new QueueException("can not remove data : Queue is Empty");
         } else {
-            data[front++] = -1;
+            ShiftRight();
         }
+    }
+
+    public void ShiftRight() {
+        for (int i = front; i < back - 1; i++) {
+            data[i] = data[i + 1];
+        }
+        back--;
+
     }
 
     public void printQueue() {
@@ -49,14 +57,4 @@ public class CustomQueue {
         }
     }
 
-    public static void main(String[] args) throws QueueException {
-        CustomQueue que = new CustomQueue(15);
-        que.addData(1);
-        que.addData(2);
-
-        que.RemoveData();
-
-        que.printQueue();
-        System.out.println(que.isEmpty() + " " + que.isFull());
-    }
 }
