@@ -56,6 +56,9 @@ public class Hashmap_intro {
     System.out.println(mp.containsKey("pandita")); //returns true
 
 
+    // check if it contains this value or not
+    System.out.println(mp.containsValue(21));
+    
     //Adding new element if it does not exist
     mp.putIfAbsent("Rahul", 12);  // returns false 
     mp.putIfAbsent("notRahul",11);  // returns true
