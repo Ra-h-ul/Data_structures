@@ -1,0 +1,151 @@
+
+import java.util.LinkedList;
+
+public class Custom_Hashmap {
+
+    static class MyHashMap<K, V> {
+
+        public static final int DEFAULT_CAPACITY = 4;
+        public static final float LOAD_FACTOR = 0.75f;
+        public int n =0;
+
+        // creates generic Node for HashTable
+        private class Node {
+            K key;
+            V value;
+
+            Node(K key, V value) // Node constructor
+            {
+                this.key = key;
+                this.value = value;
+            }
+        }
+
+        private LinkedList<Node>[] buckets; // creates an array of linkedlists
+
+        private void initBuckets(int N) {
+            buckets = new LinkedList[N]; // size of our array of linkedlists
+
+            for (int i = 0; i < N; i++) {
+                buckets[i] = new LinkedList<>(); // creates an empty LinkedList for each index of bucket array
+            }
+        }
+
+        // travers linkedlist to find the node if found return it index if not return
+        // -1;
+        private int searchInBucket(LinkedList<Node> currbucket, K key) {
+            for (int i = 0; i < currbucket.size(); i++) {
+                if (currbucket.get(i).key == key) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        public MyHashMap() {
+            initBuckets(DEFAULT_CAPACITY);
+        }
+
+        // return size
+        public int size() {
+            return n;
+        }
+
+        // get
+        public V get(K key) {
+            int hc = key.hashCode();
+            hc = Math.abs(hc)%buckets.length;
+            LinkedList<Node> currbucket = buckets[hc];
+
+            hc =searchInBucket(currbucket, key);
+
+            if(hc!=-1)
+            {
+                return currbucket.get(hc).value;
+            }
+            return null;
+        }
+
+        // remove
+        public V remove(K key) {
+            int hc = key.hashCode();
+            hc= Math.abs(hc) % buckets.length;
+
+            LinkedList<Node> currbucket=buckets[hc];
+
+            hc = searchInBucket(currbucket, key);
+
+            if(hc!=-1)
+            {
+                Node currnode = currbucket.get(hc);
+                V value = currnode.value;
+                currbucket.remove(hc);
+                n--;
+                return value;
+            }
+            return null;
+
+        }
+
+        public void capacity()
+        {
+            
+            System.out.println(buckets.length*LOAD_FACTOR);
+        }
+
+        
+
+        // put
+        public void put(K key, V value) {
+            int hc = key.hashCode(); // inbuild func in java returns a hashnode from -value to +value
+            hc = Math.abs(hc) % buckets.length;
+
+            // current linkedlist
+            LinkedList<Node> currbucket = buckets[hc];
+
+            // traverse linkedlist ot to serach the value
+            hc = searchInBucket(currbucket, key);
+
+            if(hc ==-1) // key does not exist we need to add the new node
+            {
+                Node node = new Node(key,value);
+                currbucket.add(node);
+                n++;
+            }
+            else // key exist we need to update the key
+            {
+                Node currNode = currbucket.get(hc);
+                currNode.value=value;
+            }
+
+        }
+
+    }
+
+    // put , get , remove , contains
+
+    public static void main(String[] args) {
+        MyHashMap<Integer, Integer> mp = new MyHashMap<>();
+        mp.put(1,2);
+        mp.put(1,3);
+        mp.put(3,2);
+        mp.put(4,2);
+        mp.put(5,3);
+        mp.put(6,2);
+         mp.put(7,2);
+        mp.put(8,3);
+        mp.put(9,2);
+        mp.put(10,2);
+        mp.put(11,3);
+        mp.put(12,2);
+        
+        System.out.println(mp.get(1));
+        mp.remove(1);
+        System.out.println(mp.get(3));
+        System.out.println(mp.size());
+        System.out.println(mp.get(1));
+
+        mp.capacity();
+
+    }
+}
