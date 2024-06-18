@@ -92,9 +92,11 @@ public class String_intro {
         System.out.println("Rahul".substring(2,5)); // starts from 2 to 5-1
         System.out.println("Rahul".substring(0,0)); // prints nothing
         
+
+        
         
 /*
-    Interning of String in Java :
+    Interning of String in Java :String Interning is a method of storing only one copy of each distinct String Value, which must be immutable. Applying String.intern() on a couple of strings will ensure that all strings having the same contents share the same memory.
     
     String str = "Hello";
     String gtr = "Hello";

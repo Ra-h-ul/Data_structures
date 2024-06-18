@@ -13,6 +13,7 @@ public class String_builder_intro {
         StringBuilder sc = new StringBuilder(100); //string builder with capacity 100
         StringBuilder sd = new StringBuilder("Rahul"); // string where sd = "Rahul"
 
+
         // adding elements
         sd.append(" pa");
         sd.append("ndita");  // here original string is modified
@@ -63,6 +64,7 @@ public class String_builder_intro {
 
 
 
-
+        System.out.println(sb);
+        System.out.println(sc);
     }
 }
