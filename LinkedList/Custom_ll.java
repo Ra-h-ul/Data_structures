@@ -134,26 +134,14 @@ public class Custom_ll {
         MyLinkedList ll = new MyLinkedList();
         ll.insert_at_end(1);
         ll.insert_at_end(2);
-        ll.insert_at_head(0);
-        ll.insert_at_index(1, 101);
-        ll.insert_at_index(0, 10);
-        ll.insert_at_index(4, 100);
-        ll.update(0, -1);
-        ll.update(3, 300);
-        ll.update(5, 500);
-        ll.display();
-        System.out.println(ll.head.data);
-        System.out.println(ll.tail.data);
-        System.out.println("-------------");
-
-        ll.delete(5);
-        ll.delete(0);
-        ll.delete(3);
+         ll.insert_at_end(3);
+        ll.insert_at_end(4);
+         ll.insert_at_end(5);
+        ll.insert_at_end(6);
+         ll.insert_at_end(7);
+        ll.insert_at_end(8);
+         ll.insert_at_end(9);
+        
        
-
-        ll.display();
-         System.out.println(ll.head.data);
-        System.out.println(ll.tail.data);
-        System.out.println(ll.size());
     }
 }
