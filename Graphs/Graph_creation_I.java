@@ -56,14 +56,54 @@ public class Graph_creation_I {
         }
     }
 
+    public static void BFS(ArrayList<Edge> graph[] , int current )
+    {
+        boolean[] vis = new boolean[graph.length];
+        Queue<Integer> qu = new LinkedList<>();
+        qu.add(current);
+
+        while(!qu.isEmpty())
+        {
+            current=qu.poll();
+            if(vis[current]==false)
+            {
+                System.out.print(current + " ");
+                vis[current]=true;
+
+                for(int i=0 ;i<graph[current].size() ; i++)
+                {
+                    Edge e = graph[current].get(i);
+                    qu.add(e.dest);
+                }
+            }
+        }
+        System.out.println();
+    }
+
+    public static void DFS(ArrayList<Edge> graph[] , int current , boolean[] vis )
+    {
+        
+       System.out.print(current+ " ");
+       vis[current]=true;
+
+       for(int i =0 ; i<graph[current].size() ; i++)
+       {
+            Edge e = graph[current].get(i);
+            if(vis[e.dest]==false)
+            {
+                DFS(graph , e.dest , vis);
+            }
+       }
+
+       
+    }
     public static void main(String[] args) {
         ArrayList<Edge> graph[] = new ArrayList[4];
         create_graph(graph);
-        get_neighbours(0 , graph);
-        get_neighbours(1 , graph);
-        get_neighbours(2 , graph);
-        get_neighbours(3 , graph);
-
-        get_all_neighbours(graph);
+        boolean[] vis = new boolean[4];
+        DFS(graph, 0, vis);
+        System.out.println();
+        BFS(graph, 0);
+        
     }
 }
