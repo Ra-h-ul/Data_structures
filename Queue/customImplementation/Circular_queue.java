@@ -1,5 +1,4 @@
 
-
 public class Circular_queue {
 
     public static class Queue_C {
