@@ -1,5 +1,4 @@
-public class LL4 {
-    
+public class LL5 {
     public static class Node {
         int data;
         Node next;
@@ -106,38 +105,34 @@ public class LL4 {
             System.out.println(tail.data);
         }
 
-        public int delete_middle(){
-            Node slow = head;
-            Node fast = head;
-            Node prev = null;
 
-            if(head==null || head.next==null){
-                head = null;
-                tail = null;
-                return -1 ;
+        public void print_reverse_helper(Node temp){
+            if(temp==null){
+                return ;
             }
+            print_reverse_helper(temp.next);
+            System.out.print(temp.data + " ");
+        }
 
-            while(fast!=null && fast.next!=null){
-                fast=fast.next.next;
-                prev=slow;
-                slow=slow.next;
+        public void print_reverse(){
+            Node temp = head;
+            if(temp!=null){
+                print_reverse_helper(temp);
             }
-            int data=slow.data;
-            prev.next=slow.next;
-            size--;
-            return data;
         }
     }
         public static void main(String[] args) {
             Custom_ll list = new Custom_ll();
 
         list.insert_at_end(0);
-        
-            
-        
-    
-        list.display();
-        System.out.println(list.delete_middle());
-        list.display();
-    }
+        list.insert_at_end(1);
+        list.insert_at_end(2);
+        list.insert_at_end(3);
+        list.insert_at_end(4);
+        list.insert_at_end(5);
+
+        list.print_reverse();
+
+        }
+
 }
