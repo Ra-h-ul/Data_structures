@@ -7,8 +7,7 @@ public class ST7 {
         int i = 0 ;
         int j=st.length()-1;
         while(i<j){
-            // System.out.println(st.charAt(i));
-            // System.out.println(st.charAt(j));
+            
             while(i<st.length()){
                 if(st.charAt(i)!='a' && st.charAt(i)!='e' && st.charAt(i)!='i' && st.charAt(i)!='o' && st.charAt(i)!='u')i++;
                 else break;

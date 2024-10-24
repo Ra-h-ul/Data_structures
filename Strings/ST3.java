@@ -1,6 +1,6 @@
 //check if a string is moved 2 steps clock wise or anti clock wise 
 /*
-999check for char at  i in one string ans (i+2)%n in another string
+check for char at  i in one string ans (i+2)%n in another string
  */
 public class ST3 {
 
